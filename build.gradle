@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.koy'
+version '1.0.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
+    compile group: 'org.freemarker', name: 'freemarker', version: '2.3.30'
+
+
+}
