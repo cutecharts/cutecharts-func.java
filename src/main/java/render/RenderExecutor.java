@@ -23,25 +23,25 @@ public class RenderExecutor {
 
 
     public static Consumer<Chart> renderToPath(String src) {
-        return chart -> doRender(chart, new File(src));
+        return chart -> doRender.accept(chart, new File(src));
     }
 
-    private static void doRender(Chart chart, File path) {
+    private static BiConsumer<Chart, File> doRender = (chart, path) -> {
         String src = path.getPath();
         int index = src.lastIndexOf('.');
         if (index == -1) {
-            doRender(chart, new File(src + '/' + DEFAULT_PATH));
+            RenderExecutor.doRender.accept(chart, new File(src + '/' + DEFAULT_PATH));
             return;
         }
         String suffix = src.substring(index + 1);
         if (!suffix.equalsIgnoreCase(DEFAULT_SUFFIX)) {
-            parser(chart, new File(DEFAULT_PATH));
+            RenderExecutor.parser.accept(chart, new File(DEFAULT_PATH));
             return;
         }
-        parser(chart, path);
-    }
-
-    private static void parser(Chart chart, File targetFile) {
+        RenderExecutor.parser.accept(chart, path);
+    };
+    
+    private static BiConsumer<Chart, File> parser = (chart, targetFile) -> {
         Template template = TemplateInstance.BASIC.getTemplate();
 
         String data = JSONObject.toJSONString(chart);
@@ -55,5 +55,5 @@ public class RenderExecutor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    };
 }
