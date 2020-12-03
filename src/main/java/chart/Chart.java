@@ -1,5 +1,6 @@
 package chart;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import core.GlobalOptionFunction;
 import core.SeriesOptionFunction;
 import core.enums.ChartType;
@@ -18,6 +19,7 @@ public class Chart {
     private String xLabel;
     private String yLabel;
     private SeriesOptions options;
+    private Data data = new Data();
     transient private ChartType chartType;
     transient private String width = "1200px";
     transient private String height = "900px";
@@ -46,6 +48,7 @@ public class Chart {
         return this;
     }
 
+    @JSONField(name = "options")
     public SeriesOptions getSeriesOptions() {
         return this.options;
     }
@@ -110,5 +113,13 @@ public class Chart {
 
     public SeriesOptions getOptions() {
         return options;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
     }
 }
