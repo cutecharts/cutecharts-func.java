@@ -2,6 +2,7 @@ package render;
 
 import chart.Chart;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import freemarker.template.Template;
 
 import java.io.File;
@@ -40,11 +41,11 @@ public class RenderExecutor {
         }
         RenderExecutor.parser.accept(chart, path);
     };
-    
+
     private static BiConsumer<Chart, File> parser = (chart, targetFile) -> {
         Template template = TemplateInstance.BASIC.getTemplate();
 
-        String data = JSONObject.toJSONString(chart);
+        String data = JSONObject.toJSONString(chart, SerializerFeature.DisableCircularReferenceDetect);
 
         HashMap<String, Object> root = new HashMap<>(2);
         root.put(CHART_INSTANCE, chart);
