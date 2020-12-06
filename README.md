@@ -22,6 +22,8 @@ Definitely, It is more fun to make something has more possibilities.
 ## 📝 Useage
 
 > Using the `Functional` stuff, it should be `JDK8` at least.
+>
+> It uses the `Lombok` plugin, you may need access your IDE support.
 
 ### Import Dependency
 > Maven 

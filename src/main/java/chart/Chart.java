@@ -18,7 +18,6 @@ import java.util.UUID;
  * @author Koy  https://github.com/Koooooo-7
  * @Description
  */
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Chart {

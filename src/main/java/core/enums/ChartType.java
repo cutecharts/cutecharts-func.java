@@ -7,7 +7,6 @@ import lombok.Getter;
  * @Auther Koy  https://github.com/Koooooo-7
  * @Description
  */
-
 @AllArgsConstructor
 @Getter
 public enum ChartType {

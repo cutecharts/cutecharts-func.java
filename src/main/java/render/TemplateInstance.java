@@ -13,7 +13,6 @@ public enum TemplateInstance {
 
     BASIC(getConfig(TemplateEnums.BASIC));
 
-
     TemplateInstance(Template template) {
         this.template = template;
     }

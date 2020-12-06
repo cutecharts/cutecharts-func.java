@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author Koy  https://github.com/Koooooo-7
  * @Description
  */
-
 @Getter
 public class SeriesOptions implements Serializable {
 
