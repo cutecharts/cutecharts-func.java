@@ -1,55 +1,34 @@
 package chart;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * @Auther Koy  https://github.com/Koooooo-7
  * @Description
  */
+@Getter
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Data implements Serializable {
 
     private List<?> labels;
 
     private List<DataSet> datasets = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "Data{" +
-                "labels=" + labels +
-                ", dataSets=" + datasets +
-                '}';
-    }
-
-    public void appendDataSet(DataSet dataSet) {
+    transient public Consumer<DataSet> appendDataSet = dataSet -> {
         this.datasets.add(dataSet);
-    }
+    };
 
-    public void setLabels(List<? extends Number> labels) {
+    transient public Consumer<List<?>> setLabels = labels -> {
         this.labels = labels;
-    }
-
-    public void setLabels(Integer[] label) {
-        this.labels = Arrays.asList(label);
-    }
-
-    public void setLabels(String[] label) {
-        this.labels = Arrays.asList(label);
-    }
-
-    public List<?> getLabels() {
-        return labels;
-    }
-
-    public List<DataSet> getDatasets() {
-        return datasets;
-    }
-
-    public void setDatasets(List<DataSet> datasets) {
-        this.datasets = datasets;
-    }
-
+    };
 
 }

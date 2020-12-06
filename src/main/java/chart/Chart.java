@@ -1,12 +1,15 @@
 package chart;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import core.DataSetOptionFunction;
 import core.GlobalOptionFunction;
 import core.SeriesOptionFunction;
 import core.enums.ChartType;
+import lombok.Getter;
 import opts.SeriesOptions;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -14,13 +17,14 @@ import java.util.UUID;
  * @Description
  */
 
+@Getter
 public class Chart {
     private String title;
     private String xLabel;
     private String yLabel;
     private SeriesOptions options;
     private Data data = new Data();
-    transient private ChartType chartType;
+    transient private String chartType;
     transient private String width = "1200px";
     transient private String height = "900px";
     transient private String chartId = UUID.randomUUID().toString().replace("-", "");
@@ -29,7 +33,7 @@ public class Chart {
     }
 
     private Chart(ChartType chartType) {
-        this.chartType = chartType;
+        this.chartType = chartType.getSymbol();
         this.options = new SeriesOptions();
     }
 
@@ -76,6 +80,23 @@ public class Chart {
             return this;
         }
 
+        @SafeVarargs
+        public final newChart setDataSeriesOptions(DataSetOptionFunction<Data, Data>... dataSets) {
+            Arrays.stream(dataSets).reduce(DataSetOptionFunction::andThen).get().apply(instance.data);
+            return this;
+        }
+
+        private final newChart setDataLabels(List<?> labels) {
+            instance.data.setLabels.accept(labels);
+            return this;
+        }
+
+        public final newChart setDataLabels(String... labels) {
+            instance.data.setLabels.accept(Arrays.asList(labels));
+            return this;
+        }
+
+
         public final Chart build() {
             return instance;
         }
@@ -83,43 +104,4 @@ public class Chart {
 
     }
 
-    public ChartType getChartType() {
-        return chartType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getxLabel() {
-        return xLabel;
-    }
-
-    public String getyLabel() {
-        return yLabel;
-    }
-
-    public String getChartId() {
-        return chartId;
-    }
-
-    public String getWidth() {
-        return width;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public SeriesOptions getOptions() {
-        return options;
-    }
-
-    public Data getData() {
-        return data;
-    }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
 }

@@ -2,14 +2,15 @@ package opts;
 
 import chart.Chart;
 import core.SeriesOptionFunction;
-import core.enums.ChartType;
 import core.enums.Position;
+
+import java.io.Serializable;
 
 /**
  * @author Koy  https://github.com/Koooooo-7
  * @Description
  */
-public class SeriesOptions {
+public class SeriesOptions implements Serializable {
 
     private int xTickCount = 3;
     private int yTickCount = 3;
@@ -92,6 +93,46 @@ public class SeriesOptions {
             chart.getSeriesOptions().fontFamily = fontFamily;
             return chart;
         };
+    }
+
+    public int getxTickCount() {
+        return xTickCount;
+    }
+
+    public int getyTickCount() {
+        return yTickCount;
+    }
+
+    public boolean isShowLabels() {
+        return showLabels;
+    }
+
+    public boolean isShowLegend() {
+        return showLegend;
+    }
+
+    public Position getLegendPosition() {
+        return legendPosition;
+    }
+
+    public String[] getDataColors() {
+        return dataColors;
+    }
+
+    public boolean isUnxkcdify() {
+        return unxkcdify;
+    }
+
+    public String getStrokeColor() {
+        return strokeColor;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public String getFontFamily() {
+        return fontFamily;
     }
 }
 
