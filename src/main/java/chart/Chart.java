@@ -96,6 +96,10 @@ public class Chart {
             return this;
         }
 
+        public final newChart setDataLabels(Integer... labels) {
+            instance.data.setLabels.accept(Arrays.asList(labels));
+            return this;
+        }
 
         public final Chart build() {
             return instance;
