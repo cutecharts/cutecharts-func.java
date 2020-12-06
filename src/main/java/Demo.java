@@ -13,19 +13,18 @@ import render.RenderExecutor;
 
 public class Demo {
     public static void main(String[] args) {
-        Chart line = Chart.newChart(ChartType.STACKED_BAR)
+        Chart line = Chart.newChart(ChartType.LINE)
                 .setGlobalOptions(
-                        GlobalOptions.setTitle("Demo"),
-                        GlobalOptions.setXLabel("x"),
-                        GlobalOptions.setYLabel("y")
+                        GlobalOptions.setTitle("Demo-Line"),
+                        GlobalOptions.setXLabel("X-axis Week"),
+                        GlobalOptions.setYLabel("Y-axis Amount")
                 ).setSeriesOptions(
-                        SeriesOptions.setBackgroundColor("yellow")
+                        SeriesOptions.setBackgroundColor("orange")
                 )
-                .setDataLabels("Mon", "Tue", "Wed", "Thu")
+                .setDataLabels(1, 2, 3, 4, 5, 6, 7)
                 .setDataSeriesOptions(
-                        DataSet.addDataSet("apple", 1, 2, 3, 4),
-                        DataSet.addDataSet("banana", 11, 2, 6, 4),
-                        DataSet.addDataSet("peal", 3, 6, 2, 7)
+                        DataSet.addDataSet("Beer", 1, 2, 3, 4, 2, 5, 4),
+                        DataSet.addDataSet("Juice", 1, 4, 7, 4, 1, 3, 2)
                 )
                 .build();
 
