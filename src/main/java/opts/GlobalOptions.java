@@ -2,7 +2,6 @@ package opts;
 
 import chart.Chart;
 import core.GlobalOptionFunction;
-import core.enums.ChartType;
 
 /**
  * @author Koy  https://github.com/Koooooo-7
@@ -10,13 +9,6 @@ import core.enums.ChartType;
  */
 
 public class GlobalOptions {
-
-
-    private ChartType chartType;
-    private String title;
-    private String xLabel;
-    private String yLabel;
-
 
     public static GlobalOptionFunction<Chart, Chart> setTitle(String title) {
         return chart -> chart.setTitle(title);

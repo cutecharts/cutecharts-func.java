@@ -5,7 +5,9 @@ import core.DataSetOptionFunction;
 import core.GlobalOptionFunction;
 import core.SeriesOptionFunction;
 import core.enums.ChartType;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import opts.SeriesOptions;
 
 import java.util.Arrays;
@@ -18,6 +20,7 @@ import java.util.UUID;
  */
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Chart {
     private String title;
     private String xLabel;
@@ -28,9 +31,6 @@ public class Chart {
     transient private String width = "1200px";
     transient private String height = "900px";
     transient private String chartId = UUID.randomUUID().toString().replace("-", "");
-
-    private Chart() {
-    }
 
     private Chart(ChartType chartType) {
         this.chartType = chartType.getSymbol();

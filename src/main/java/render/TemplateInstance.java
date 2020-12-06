@@ -1,8 +1,5 @@
 package render;
 
-
-
-
 import core.FreeMarkConfig;
 import freemarker.template.Template;
 
