@@ -85,7 +85,7 @@ public class Chart {
             return this;
         }
 
-        private final newChart setDataLabels(List<?> labels) {
+        private newChart setDataLabels(List<?> labels) {
             instance.data.setLabels.accept(labels);
             return this;
         }

@@ -20,6 +20,8 @@ public class SeriesOptions implements Serializable {
     private boolean showLegend = true;
     private Position legendPosition = Position.UP_LEFT;
     private String[] dataColors;
+    // set the color by default for bar.
+    private boolean isFillColor;
     private boolean unxkcdify = false;
     private String strokeColor = "black";
     private String backgroundColor = "white";
@@ -93,6 +95,13 @@ public class SeriesOptions implements Serializable {
     public static SeriesOptionFunction<Chart, Chart> setFontFamily(String fontFamily) {
         return chart -> {
             chart.getSeriesOptions().fontFamily = fontFamily;
+            return chart;
+        };
+    }
+
+    public static SeriesOptionFunction<Chart, Chart> setFillColor(boolean isFillColor) {
+        return chart -> {
+            chart.getSeriesOptions().isFillColor = isFillColor;
             return chart;
         };
     }
