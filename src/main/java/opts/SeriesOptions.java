@@ -22,7 +22,7 @@ public class SeriesOptions implements Serializable {
     private Position legendPosition = Position.UP_LEFT;
     private String[] dataColors;
     // set the color by default for bar.
-    private boolean isFillColor;
+    private boolean fillColor;
     private boolean unxkcdify = false;
     private String strokeColor = "black";
     private String backgroundColor = "white";
@@ -103,7 +103,7 @@ public class SeriesOptions implements Serializable {
     public static SeriesOptionFunction<Chart, Chart> setFillColor(boolean isFillColor) {
         return chart -> {
             if(chart.getChartType().equalsIgnoreCase(ChartType.BAR.getSymbol())){
-                chart.getSeriesOptions().isFillColor = isFillColor;
+                chart.getSeriesOptions().fillColor = isFillColor;
             }
             return chart;
         };
