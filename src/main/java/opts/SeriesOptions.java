@@ -2,6 +2,7 @@ package opts;
 
 import chart.Chart;
 import core.SeriesOptionFunction;
+import core.enums.ChartType;
 import core.enums.Position;
 import lombok.Getter;
 
@@ -64,7 +65,7 @@ public class SeriesOptions implements Serializable {
         };
     }
 
-    public static SeriesOptionFunction<Chart, Chart> setDataColors(String[] dataColors) {
+    public static SeriesOptionFunction<Chart, Chart> setDataColors(String... dataColors) {
         return chart -> {
             chart.getSeriesOptions().dataColors = dataColors;
             return chart;
@@ -101,7 +102,9 @@ public class SeriesOptions implements Serializable {
 
     public static SeriesOptionFunction<Chart, Chart> setFillColor(boolean isFillColor) {
         return chart -> {
-            chart.getSeriesOptions().isFillColor = isFillColor;
+            if(chart.getChartType().equalsIgnoreCase(ChartType.BAR.getSymbol())){
+                chart.getSeriesOptions().isFillColor = isFillColor;
+            }
             return chart;
         };
     }
