@@ -6,6 +6,7 @@ import chart.Dot;
 import core.DataSetOptionFunction;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Koy  https://github.com/Koooooo-7
@@ -29,6 +30,20 @@ public class DataSetOptions {
     }
 
     public static DataSetOptionFunction<Chart, Chart> setDataLabels(Integer... labels) {
+        return chart -> {
+            chart.getData().setLabels.accept(Arrays.asList(labels));
+            return chart;
+        };
+    }
+
+    public static DataSetOptionFunction<Chart, Chart> setDataLabels(List<?> labels) {
+        return chart -> {
+            chart.getData().setLabels.accept(labels);
+            return chart;
+        };
+    }
+
+    public static DataSetOptionFunction<Chart, Chart> setDataLabels(String... labels) {
         return chart -> {
             chart.getData().setLabels.accept(Arrays.asList(labels));
             return chart;
