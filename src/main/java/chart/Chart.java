@@ -90,7 +90,7 @@ public class Chart {
             return this;
         }
 
-        private newChart setDataLabels(List<?> labels) {
+        public newChart setDataLabels(List<?> labels) {
             instance.data.setLabels.accept(labels);
             return this;
         }

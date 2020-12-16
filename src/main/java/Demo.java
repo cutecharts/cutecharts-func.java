@@ -31,7 +31,7 @@ public class Demo {
         RenderExecutor.renderToPath("./").accept(line);
 
 
-        Chart chart = GlobalOptions.setTitle("Demo-Line")
+        Chart line1 = GlobalOptions.setTitle("Demo-Line")
                 .andThen(GlobalOptions.setXLabel("X-axis Week"))
                 .andThen(GlobalOptions.setYLabel("Y-axis Amount"))
                 .andThen(SeriesOptions.setBackgroundColor("orange"))
@@ -40,7 +40,7 @@ public class Demo {
                 .andThen(DataSetOptions.setDataLabels(1, 2, 3, 4, 5, 6, 7))
                 .apply(Chart.chartSupplier(ChartType.LINE).get());
 
-        RenderExecutor.renderToPath("./render01.html").accept(chart);
+        RenderExecutor.renderToPath("./render01.html").accept(line1);
 
     }
 }
