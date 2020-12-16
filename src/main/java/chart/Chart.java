@@ -13,6 +13,7 @@ import opts.SeriesOptions;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 /**
  * @author Koy  https://github.com/Koooooo-7
@@ -34,6 +35,10 @@ public class Chart {
     private Chart(ChartType chartType) {
         this.chartType = chartType.getSymbol();
         this.options = new SeriesOptions();
+    }
+
+    public static Supplier<Chart> chartSupplier(ChartType chartType) {
+        return () -> new Chart(chartType);
     }
 
     public Chart setTitle(String title) {
@@ -103,8 +108,6 @@ public class Chart {
         public final Chart build() {
             return instance;
         }
-
-
     }
 
 }

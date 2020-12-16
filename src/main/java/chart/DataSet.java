@@ -19,7 +19,7 @@ public class DataSet implements Serializable {
     private String label;
     private List<?> data;
 
-    private DataSet(String label, List<?> data) {
+    public DataSet(String label, List<?> data) {
         this.label = label;
         this.data = data;
     }
