@@ -47,7 +47,7 @@ public class RenderExecutor {
 
         String data = JSONObject.toJSONString(chart, SerializerFeature.DisableCircularReferenceDetect);
 
-        HashMap<String, Object> root = new HashMap<>(2);
+        HashMap<String, Object> root = new HashMap<>(1 << 2);
         root.put(CHART_INSTANCE, chart);
         root.put(JSON_DATA, data);
 
