@@ -1,10 +1,12 @@
 import chart.Chart;
 import chart.DataSet;
 import core.enums.ChartType;
-import opts.DataSetOptions;
-import opts.GlobalOptions;
-import opts.SeriesOptions;
 import render.RenderExecutor;
+
+import static chart.Chart.chartSupplier;
+import static opts.DataSetOptions.*;
+import static opts.GlobalOptions.*;
+import static opts.SeriesOptions.*;
 
 /**
  * @author Koy  https://github.com/Koooooo-7
@@ -15,11 +17,11 @@ public class Demo {
     public static void main(String[] args) {
         Chart line = Chart.newChart(ChartType.LINE)
                 .setGlobalOptions(
-                        GlobalOptions.setTitle("Demo-Line"),
-                        GlobalOptions.setXLabel("X-axis Week"),
-                        GlobalOptions.setYLabel("Y-axis Amount")
+                        setTitle("Demo-Line"),
+                        setXLabel("X-axis Week"),
+                        setYLabel("Y-axis Amount")
                 ).setSeriesOptions(
-                        SeriesOptions.setBackgroundColor("orange")
+                        setBackgroundColor("orange")
                 )
                 .setDataLabels(1, 2, 3, 4, 5, 6, 7)
                 .setDataSeriesOptions(
@@ -31,14 +33,14 @@ public class Demo {
         RenderExecutor.renderToPath("./").accept(line);
 
 
-        Chart line1 = GlobalOptions.setTitle("Demo-Line")
-                .andThen(GlobalOptions.setXLabel("X-axis Week"))
-                .andThen(GlobalOptions.setYLabel("Y-axis Amount"))
-                .andThen(SeriesOptions.setBackgroundColor("orange"))
-                .andThen(DataSetOptions.addDataSet("Beer", 1, 2, 3, 4, 2, 5, 4))
-                .andThen(DataSetOptions.addDataSet("Juice", 1, 4, 7, 4, 1, 3, 2))
-                .andThen(DataSetOptions.setDataLabels(1, 2, 3, 4, 5, 6, 7))
-                .apply(Chart.chartSupplier(ChartType.LINE).get());
+        Chart line1 = setTitle("Demo-Line")
+                .and(setXLabel("X-axis Week"))
+                .and(setYLabel("Y-axis Amount"))
+                .and(setBackgroundColor("orange"))
+                .and(addDataSet("Beer", 1, 2, 3, 4, 2, 5, 4))
+                .and(addDataSet("Juice", 1, 4, 7, 4, 1, 3, 2))
+                .and(setDataLabels(1, 2, 3, 4, 5, 6, 7))
+                .apply(chartSupplier(ChartType.LINE).get());
 
         RenderExecutor.renderToPath("./render01.html").accept(line1);
 

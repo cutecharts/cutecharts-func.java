@@ -74,19 +74,19 @@ public class Chart {
 
         @SafeVarargs
         public final newChart setGlobalOptions(GlobalOptionFunction<Chart, Chart>... options) {
-            Arrays.stream(options).reduce(GlobalOptionFunction::andThen).get().apply(instance);
+            Arrays.stream(options).reduce(GlobalOptionFunction::and).get().apply(instance);
             return this;
         }
 
         @SafeVarargs
         public final newChart setSeriesOptions(SeriesOptionFunction<Chart, Chart>... options) {
-            Arrays.stream(options).reduce(SeriesOptionFunction::andThen).get().apply(instance);
+            Arrays.stream(options).reduce(SeriesOptionFunction::and).get().apply(instance);
             return this;
         }
 
         @SafeVarargs
         public final newChart setDataSeriesOptions(DataSetOptionFunction<Data, Data>... dataSets) {
-            Arrays.stream(dataSets).reduce(DataSetOptionFunction::andThen).get().apply(instance.data);
+            Arrays.stream(dataSets).reduce(DataSetOptionFunction::and).get().apply(instance.data);
             return this;
         }
 

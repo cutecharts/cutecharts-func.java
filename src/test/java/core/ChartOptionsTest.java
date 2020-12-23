@@ -24,8 +24,8 @@ public class ChartOptionsTest {
     @Test
     public void testChartGlobalOptions() {
         Chart chart = GlobalOptions.setTitle("Test")
-                .andThen(GlobalOptions.setYLabel("Y"))
-                .andThen(GlobalOptions.setXLabel("X"))
+                .and(GlobalOptions.setYLabel("Y"))
+                .and(GlobalOptions.setXLabel("X"))
                 .apply(Chart.chartSupplier(ChartType.LINE).get());
 
         Assert.assertEquals("title", "Test", chart.getTitle());
