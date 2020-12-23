@@ -9,9 +9,7 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface DataSetOptionFunction<T, R> extends Function<T, R> {
-
-    @Override
-    default <V> DataSetOptionFunction<T, V> andThen(Function<? super R, ? extends V> after) {
+    default <V> DataSetOptionFunction<T, V> and(Function<? super R, ? extends V> after) {
         Objects.requireNonNull(after);
         return (T t) -> after.apply(apply(t));
     }

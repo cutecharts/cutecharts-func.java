@@ -9,8 +9,7 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface GlobalOptionFunction<T, R> extends Function<T, R> {
-    @Override
-    default <V> GlobalOptionFunction<T, V> andThen(Function<? super R, ? extends V> after) {
+    default <V> GlobalOptionFunction<T, V> and(Function<? super R, ? extends V> after) {
         Objects.requireNonNull(after);
         return (T t) -> after.apply(apply(t));
     }
