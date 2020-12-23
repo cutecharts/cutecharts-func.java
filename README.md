@@ -71,14 +71,14 @@ compile group: 'com.koy', name: 'cutecharts-func', version: '1.0.0'
 > Absolutely, you can be more functional !
 
 ```java
-   Chart line = GlobalOptions.setTitle("Demo-Line")
-                .andThen(GlobalOptions.setXLabel("X-axis Week"))
-                .andThen(GlobalOptions.setYLabel("Y-axis Amount"))
-                .andThen(SeriesOptions.setBackgroundColor("orange"))
-                .andThen(DataSetOptions.addDataSet("Beer", 1, 2, 3, 4, 2, 5, 4))
-                .andThen(DataSetOptions.addDataSet("Juice", 1, 4, 7, 4, 1, 3, 2))
-                .andThen(DataSetOptions.setDataLabels(1, 2, 3, 4, 5, 6, 7))
-                .apply(Chart.chartSupplier(ChartType.LINE).get());
+   Chart line = setTitle("Demo-Line")
+                   .and(setXLabel("X-axis Week"))
+                   .and(setYLabel("Y-axis Amount"))
+                   .and(setBackgroundColor("orange"))
+                   .and(addDataSet("Beer", 1, 2, 3, 4, 2, 5, 4))
+                   .and(addDataSet("Juice", 1, 4, 7, 4, 1, 3, 2))
+                   .and(setDataLabels(1, 2, 3, 4, 5, 6, 7))
+                   .apply(chartSupplier(ChartType.LINE).get());
 
         RenderExecutor.renderToPath("./line.html").accept(line);
 ```
