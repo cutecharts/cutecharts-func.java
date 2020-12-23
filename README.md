@@ -80,7 +80,7 @@ compile group: 'com.koy', name: 'cutecharts-func', version: '1.0.0'
                    .and(setDataLabels(1, 2, 3, 4, 5, 6, 7))
                    .apply(chartSupplier(ChartType.LINE).get());
 
-        RenderExecutor.renderToPath("./line.html").accept(line);
+   RenderExecutor.renderToPath("./line.html").accept(line);
 ```
 
 
