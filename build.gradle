@@ -5,6 +5,17 @@ plugins {
 
 group 'com.koy'
 version '1.0.0'
+install {
+    repositories {
+        mavenInstaller {
+            pom.version = '1.0.0'
+            pom.groupId = 'com.koy'
+            pom.artifactId = 'cutecharts-func'
+            pom.writeTo("${mavenPomDir}/${project.group}/${project.name}/pom.xml")
+        }
+    }
+
+}
 
 sourceCompatibility = 1.8
 
